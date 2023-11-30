@@ -1,0 +1,17 @@
+header{
+    background-image: url("../img/backGroundImage.jpeg");
+    height: 235px;
+}
+
+.headerMargin{
+    margin: 0;
+    color:aqua;
+}
+
+.circular-image {
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%; 
+    overflow: hidden; 
+    padding: 25px;
+  }
