@@ -1,9 +1,9 @@
-.bodyx {
+.bodyForm {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 900px;
+    width: auto;
 }
 input, button {
     width: 100%;
@@ -13,9 +13,12 @@ input, button {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.button1:hover{
+.button1{
 
-    background-color: pink;
-    color:blue
+    height: 40px;
+    width: 90px;
+    border-radius: 10px;
+    background-color: rgb(61, 93, 233);
+    color:white
 
 }
