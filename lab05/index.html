@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        W1D5 - Lab Assignment 5 / Homework
+        <hr>
+Implement code for the following JavaScript functions, and be sure to use "use strict";
+<hr>
+<hr>
+1. Define a function max() that takes two numbers as arguments and returns the largest of them. Use the if-thenelse construct available in Javascript.
+<hr>
+2. Define a function maxOfThree() that takes three numbers as arguments and returns the largest of them.
+<hr>
+3. Write a function isVowel() that takes a character (i.e. a string of length 1) and returns true if it is a vowel, false otherwise.
+<hr>
+4. Define a function sum() and a function multiply() that sums and multiplies (respectively) all the numbers in the
+given array of numbers. For example, sum([1,2,3,4]) should return 10, and multiply([1,2,3,4]) should return 24.
+Note/Hint: Do these using Imperative programming approach (i.e. for…loop or while…loop)
+<hr>
+5. Define a function reverse(str) that computes the reversal of a string. For example, reverse("jag testar") should return the string "ratset gaj".
+<hr>
+6. Write a function findLongestWordLength() that takes an array of words and returns the length of the longest one.
+<hr>
+7. Write a function filterLongWords() that takes an array of words and an integer i and returns a new array
+containing only those words that were longer than i characters.
+<hr>
+8. Write a function named, computeSumOfSquares, that takes as input, an array of numbers and calculates and
+returns the sum of the squares of each number in the input array. E.g. computeSumOfSquares([1,2,3]) should be
+computed as 12 + 22 +32 = 14. Note: Write your Javascript code without using Imperative programming. i.e. Do
+NOT use any explicit looping construct; instead use functional programming style/approach.
+<hr>
+9. Write a function named, printOddNumbersOnly, that takes as input, an array of numbers and it finds and prints only the numbers which are odd.
+<hr>
+10. Write a function named, computeSumOfSquaresOfEvensOnly, that takes as input, an array of integral numbers
+and calculates and returns the sum of the squares of only the even numbers in the input array. E.g.
+computeSumOfSquaresOfEvensOnly ([1,2,3,4,5]) should be computed as 22 +42 = 20.
+<hr>
+11. Using the Array.reduce(…) function, re-implement your functions, sum(…) and multiply(…) (defined in Problem 4
+above) without using Imperative programming. i.e. Do NOT use any explicit looping construct; instead use
+functional programming style/approach.
+<hr>
+12. Write a function named printFibo, that takes as input, a given length, n, and any two starting numbers a and b,
+and it prints-out the Fibonacci sequence, e.g. (0, 1, 1, 2, 3, 5, 8, 13, 21, 34,…) of the given length, beginning with
+a and b. (e.g. printFibo(n=1, a=0, b=1), prints-out: "0", as output; printFibo(n=2, a=0, b=1), prints-out: "0, 1", as
+output; printFibo(n=3, a=0, b=1), prints-out: "0, 1, 1", as output; printFibo(n=6, a=0, b=1), prints-out: "0, 1, 1, 2,
+3, 5", as output; and printFibo(n=10, a=0, b=1), prints-out: "0, 1, 1, 2, 3, 5, 8, 13, 21, 34", as output).
+//-- Enjoy! --//
+    </pre>
+    <hr>
+    <hr>
+    <pre>
+        <h1>Solution</h1>
+        "use strict";
+
+        // number 1
+        function max(num1, num2) {
+          if (num1 > num2) return num1;
+          else if (num1 < num2) return num2;
+          else return "they are Equal";
+        }
+        
+        // number 2
+        function maxOfThree(num1, num2, num3){
+
+          let max = num1 > num2 ? num1 : num2; 
+          return max >= num3 ? max : num3;
+      }
+        
+        //  number 3
+        
+        function isVowel(str){
+          const vowel = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+          return vowel.includes(str);
+
+        } 
+        
+        
+        // number 4
+        function sum(arr) {
+          let sum = 0.0;
+          for (let i = 0; i < arr.length; i++) {
+            sum += arr[i];
+          }
+          return sum;
+        }
+        
+        function multiply(arr) {
+          let prod = 1;
+          for (let i = 0; i < arr.length; i++) {
+            prod *= arr[i];
+          }
+          return prod;
+        }
+        
+        //  number 5
+        function reverse(str) {
+          return str.split("").reverse().join("");
+        }
+        
+        //  number 6
+        function findLongestWordLength(arr) {
+          let maxLength = arr[0].length;
+          for (let i = 1; i < arr.length; i++) {
+            if (arr[i].length > maxLength) maxLength = arr[i].length;
+          }
+        
+          return maxLength;
+        }
+        
+        // number 7
+        function filterLongWords(arr, len) {
+          let newArr = [];
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i].length > len) newArr.push(arr[i]);
+          }
+          return newArr;
+        }
+        
+        // number 8
+        function computeSumOfSquares(arr) {
+          return arr.map((element) => element * element) .reduce((sum, current) => sum + current, 0);
+        }
+        
+        // number 9
+        function printOddNumbersOnly(arr) {
+          return  arr.filter((element) => element % 2 == 1);
+         }
+        
+        // number 10
+        function computeSumOfSquaresOfEvensOnly(arr) {
+          return arr.filter((element) => element % 2 == 0) .map((element) => element * element) .reduce((sum, current) => sum + current, 0);
+        }
+        
+        // number 11
+        function sumUsingReduce(arr) {
+          return arr.reduce((sum, current) => sum + current, 0);
+          
+        }
+        
+        function multiplyUsingReduce(arr) {
+         return arr.reduce((pro, current) => pro * current, 1);
+        }
+        
+        //  number 12
+        function printFibo(n, a, b) {
+          let arr = [];
+          let temp = a;
+          for (let i = 0; i < n; i++) {
+            arr.push(a);
+            temp = a;
+            a = b;
+            b = temp + b;
+          }
+          return arr;
+        }
+        </pre>
+</body>
+</html>
