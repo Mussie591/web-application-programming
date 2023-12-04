@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lab05Part2.js"></script>
+</head>
+<body>
+    <pre>
+                <h2>Lab Assignment 5 Part II</h2>
+    </pre>
+    <hr>
+    
+    <pre>
+        let libraryBooks = [
+        { title: "The Road Ahead", author: "Bill Gates", libraryID: 1235 },
+        { title: "Walter Isaacson", author: "Steve Jobs", libraryID: 4268 },
+        { title: "The Road Ahead", author: "Bill Gates", libraryID: 4268 },
+        { title: "Mockingjay: The Final Book of The Hunger Games", author: "Suzanne Collins", libraryID: 3257 }
+        ];
+        <hr>
+       1. Write the following JavaScript functions:
+       o addBook, which will take title, author, and libraryID as inputs. It will create a new book object and add it to the
+       library. addBook should return the newly created book.
+       o getTitles, which will return all the book titles in libraryBooks in an alphabetically ordered array.
+       o findBooks, which will take the keyword of title as input. It will find books which contain the given keyword in
+       the title and return books alphabetically ordered by the author.
+       <hr>
+       2. Write your own version of Array.map. Write a function, myMap(arr, fun) that takes an array and a function as
+       arguments and returns a new array that is formed by applying the function to each element of the array and saving
+       the result in the new array. Do not use the Array.map method in your code.
+       <hr>
+    </pre>
+
+                <pre>
+                    <h1>solution</h1>
+                    // 1 addBook
+
+                    function addBook(title, author, libraryID){
+                        let newBook = {title:title, author:author, libraryID: libraryID
+                        }
+
+                        libraryBooks.push(newBook);
+                        return newBook;
+                    }
+
+                    let newAddedBook = addBook("The Da Vinci Code", "Dan Brown", 7812);
+                    console.log(libraryBooks);
+
+
+                    // getTitles
+
+                    function getTitles(){
+                        return libraryBooks.map((book) => book.title).sort();
+                    }
+
+                    console.log(getTitles());
+
+
+                    //findBooks
+
+                    function findBooks(keyword){
+                        return libraryBooks.filter((book) => book.title.includes(keyword)).sort((a, b) =>{a.author.localeCompare(b)})
+                    }
+
+                    console.log(findBooks("Ahead"));
+
+
+
+                    //2 create Array.map your own version
+                    function myMap(arr, fun){
+                        return arr.reduce((acc, current, i, array) => {
+                            acc.push(fun(current, i, array));
+                            return acc;
+                        }, []);
+                    }
+
+
+                    console.log(myMap(libraryBooks, (book => book.author.toUpperCase())));
+                     </pre>
+
+    
+</body>
+</html>
