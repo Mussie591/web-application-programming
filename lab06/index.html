@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <pre>
+                               <h2> Lab 6</h2>
+                1. What will be printed by the following code snippets in non-strict mode (answer without running
+                it)?
+                <hr>
+                2. Draw the lexical environment diagram for each code snippet. Or you may list it instead of
+                drawing. For example:
+                1. Global EC creation:
+                LE:{ ...., outer:null}, TDZ{...}
+                2.Global EC execution:
+                LE:{ ...., outer:null}, TDZ{...}
+                3.C FEC creation:
+                LE:{ ...., outer:null}, TDZ{...}
+                4.C FEC execution:
+                LE:{ ...., outer:null}, TDZ{...}
+                <hr>
+                        
+                //code 1
+                x = 1;
+                var a = 5;
+                var b = 10;
+                var c = function (a, b, c) {
+                                document.write(x);
+                                document.write(a);
+                                var f = function(a, b, c){
+                                            b = a;
+                                            document.write(b);
+                                            b = c;
+                                            var x = 5;
+                                        }
+
+                                f(a, b, c);
+                                document.write(b);
+                                var x = 10;        
+                            }
+                c(8, 9, 10);
+                document.write(b);
+                document.write(x);
+                <hr>
+
+                //code 2
+
+                var x = 9;
+                function myFunction(){
+                    return x * x;
+                }
+
+                document.write(myFunction());
+                x=5;
+                document.write(myFunction());
+                <hr>
+
+                //code 3
+                var foo = 1;
+                function bar(){
+
+                    if(!foo){
+                        var foo = 10;
+                    }
+                    console.log(foo);
+                }
+
+                bar();
+            </pre>
+
+            <pre>
+                <h1>Solution</h1>
+
+
+                    Question 1
+
+                    Code1.  undefined 8 8 9 10 1
+                    Code2.  81  25
+                    Code3.  10
+                    <hr>
+                    Question 2
+
+                    Code 1
+                    
+                    Global EC Creation LE: { outer :null,  a:undefined     b:undefined    c:fn()  }  
+                    Global EC Execution LE: { outer :null,  a:5     b:10    c:fn()   x:1  } 
+                    C FEC Creation LE; { outer :global, arguments:{0:8, 1:9, 2:10, length :3 },  f:undefined    x:undefined  a:8 b:9  c:10 }
+                    C FEC Execution LE: { outer :global, arguments:{0:8, 1:9, 2:10, length :3}, f:fn()    x:undefined  a:8   b:9   c:10 }
+                    f FEC Creation LE: { Outer :c, arguments:{0:8, 1:9, 2:10, length :3}, x:undefined  a:8   b:9   c:10 }
+                    f FEC Execution LE: { Outer :c, arguments:{0:8, 1:9, 2:10, length :3},  x:5  b:10 }
+                    <hr>
+                    Code 2
+
+                    Global EC: Creation LE: { Outer: null,  x: undefined, fun:myFunction} 
+                    Global EC: Execution LE: { Outer: null, x:9,  x:5, fun:myFunction} 
+                    myFunction FEC: Creation LE: { Outer: Global,  arguments { length :0 } } 
+                    myFunction FEC: Execution LE: { Outer: Global, arguments { length :0 } } 
+                    myFunction FEC: Creation LE: { Outer: Global, arguments { length :0} } 
+                    myFunction FEC: Execution LE: { Outer: Global, arguments { length :0} 
+                    <hr>
+                    Code 3
+                    
+                    Global EC: Creation LE: { Outer: null,  foo: undefined,  bar: fun} 
+                    Global EC: Execution LE: {foo: 1} Outer: null
+                    bar FEC: Creation LE: { Outer: Global,  arguments { length :0}},  ifLE {foo: undefined } 
+                    bar FEC: Execution LE: { Outer: Global } If LE: { foo: 10 } 
+
+
+
+            </pre>
+</body>
+</html>
