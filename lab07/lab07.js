@@ -18,7 +18,7 @@ let user = {
 };
 
 // using Wrapper
-askPassword(function(){return user.loginOk();}, function(){return user.loginFail();});
+//askPassword(function(){return user.loginOk();}, function(){return user.loginFail();});
 
 // using bind
 //askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
@@ -44,4 +44,4 @@ let group = {
     }
 };
 
-group.showList();
+//group.showList();
