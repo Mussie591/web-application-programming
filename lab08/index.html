@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <pre>
+                        <h2>Lab 8</h2>
+                <strong>Question 1:</strong>
+                Create a student object using object literal which has:
+                Properties: firstName: string, lastName: string, grades: array
+                Methods:
+                • insertGrade(newGrade) push newGrade to grades
+                • computeAverageGrade(): returns average of grades
+                <hr>
+                <strong>Question 2:</strong> Redo the Question1 using Function expression.
+                <hr>
+                <strong>Question 3:</strong> Add a new method named mySort() without parameters in the built-in constructor function
+                Array. It will sort all elements in the array in the ascending order.
+                <hr>
+                <strong>Question 4:</strong>Convert the given diagram to JavaScript's Prototypal Inheritance diagram and implement the
+                code using the constructor function.
+                Animal: run method will increase the animal speed.
+                Rabbit: hide method will just print out rabbit name with “hides” string.
+                <hr>
+    </pre>
+
+        <pre>
+            <h1>Solution</h1>
+            1:
+            function Student(lastName, firstName, grades) {
+                this.lastName = lastName;
+                this.firstName = firstName;
+                this.grades = grades;
+              }
+              
+              Student.prototype.inputNewGrade = function (newGrade) {
+                {
+                  this.grades.push(newGrade);
+                }
+              };
+              Student.prototype.computeAverageGrade = function () {
+                {
+                  return this.grades.reduce((result, element) => (result + element), 0) / this.grades.length;
+                }
+              };
+              
+              let student1 = new Student("Tekle", "Mussie", []);
+              let student2 = new Student("Ande", "Semere", []);
+              let student3 = new Student("Berhane", "Nahom", []);
+              
+              student1.inputNewGrade(98);
+              student1.inputNewGrade(97);
+              student1.inputNewGrade(96);
+              
+              student2.inputNewGrade(88);
+              student2.inputNewGrade(79);
+              student2.inputNewGrade(85);
+              
+              student3.inputNewGrade(91);
+              student3.inputNewGrade(94);
+              student3.inputNewGrade(89);
+              
+              st1Avg = student1.computeAverageGrade();
+              st2Avg = student2.computeAverageGrade();
+              st3Avg = student3.computeAverageGrade();
+              
+              console.log("Grade Average of Student 1: ",st1Avg);
+              console.log("Grade Average of Student 2: ",st2Avg);
+              console.log("Grade Average of Student 3: ",st3Avg);
+              
+              let students = [st1Avg, st2Avg, st3Avg];
+              // printing the Average of all the students
+              console.log("Grade Average of all the students: ", students.reduce((result, element) => (result + element), 0) / students.length);
+              <hr>
+              2:
+              function Student(lastName, firstName, grades) {
+                this.lastName = lastName;
+                this.firstName = firstName;
+                this.grades = grades;
+              }
+              
+              Student.prototype.inputNewGrade = function (newGrade) {
+                {
+                  this.grades.push(newGrade);
+                }
+              };
+              Student.prototype.computeAverageGrade = function () {
+                {
+                  return this.grades.reduce((result, element) => (result + element), 0) / this.grades.length;
+                }
+              };
+              
+              let student1 = new Student("Tekle", "Mussie", []);
+              let student2 = new Student("Ande", "Semere", []);
+              let student3 = new Student("Berhane", "Nahom", []);
+              
+              student1.inputNewGrade(98);
+              student1.inputNewGrade(97);
+              student1.inputNewGrade(96);
+              
+              student2.inputNewGrade(88);
+              student2.inputNewGrade(79);
+              student2.inputNewGrade(85);
+              
+              student3.inputNewGrade(91);
+              student3.inputNewGrade(94);
+              student3.inputNewGrade(89);
+              
+              st1Avg = student1.computeAverageGrade();
+              st2Avg = student2.computeAverageGrade();
+              st3Avg = student3.computeAverageGrade();
+              
+              console.log("Grade Average of Student 1: ",st1Avg);
+              console.log("Grade Average of Student 2: ",st2Avg);
+              console.log("Grade Average of Student 3: ",st3Avg);
+              
+              let students = [st1Avg, st2Avg, st3Avg];
+              // printing the Average of all the students
+              console.log("Grade Average of all the students: ", students.reduce((result, element) => (result + element), 0) / students.length);
+              <hr>
+              3:
+              function Student(lastName, firstName, grades) {
+                this.lastName = lastName;
+                this.firstName = firstName;
+                this.grades = grades;
+            
+                }
+              
+              Student.prototype.inputNewGrade = function (newGrade) {
+                  this.grades.push(newGrade);
+              };
+              Student.prototype.computeAverageGrade = function () {
+                  return this.grades.reduce((result, element) => (result + element), 0) / this.grades.length;
+              };
+              
+              let student1 = new Student("Tekle", "Mussie", []);
+              let student2 = new Student("Ande", "Semere", []);
+              let student3 = new Student("Berhane", "Nahom", []);
+              
+              student1.inputNewGrade(98);
+              student1.inputNewGrade(97);
+              student1.inputNewGrade(96);
+              
+              student2.inputNewGrade(88);
+              student2.inputNewGrade(79);
+              student2.inputNewGrade(85);
+              
+              student3.inputNewGrade(91);
+              student3.inputNewGrade(94);
+              student3.inputNewGrade(89);
+              
+              st1Avg = student1.computeAverageGrade();
+              st2Avg = student2.computeAverageGrade();
+              st3Avg = student3.computeAverageGrade();
+              
+              console.log("Grade Average of Student 1: ",st1Avg);
+              console.log("Grade Average of Student 2: ",st2Avg);
+              console.log("Grade Average of Student 3: ",st3Avg);
+              
+              let students = [st1Avg, st2Avg, st3Avg];
+              // printing the Average of all the students
+              console.log("Grade Average of all the students: ", students.reduce((result, element) => (result + element), 0) / students.length);
+              
+              Array.prototype.sort(()=>{
+                (a,b)=>{return a-b};
+                })
+              
+            // sorting students by their firstName
+              const studentsByNames = [student1.firstName, student2.firstName, student3.firstName];
+              console.log(studentsByNames.sort());
+            
+              // sorting students by their average grade
+              const studentsByAverage = [st1Avg, st2Avg, st3Avg];
+              console.log(studentsByAverage.sort());
+                <hr>
+                4:
+                function Animal(name, speed){
+                    this.name=name;
+                    this.speed=speed;
+                    }
+                    
+                    Animal.prototype.run = function(speed){
+                        this.speed += speed
+                        return this.speed;
+                    }
+                    
+                    Animal.compareBySpeed = function(a1,a2){
+                    return a1.speed - a2.speed;
+                    }
+                    
+                    function Rabbit(name, speed){
+                        Animal.call(this, name, speed);
+                    }
+                    Rabbit.prototype.hide= function(){
+                       return this.name+" hides";
+                    }
+                    
+                    Object.setPrototypeOf(Rabbit, Animal);
+                    Object.setPrototypeOf(Rabbit.prototype, Animal.prototype)
+                    
+                    
+                    let rab1 = new Rabbit("rabbit1", 23);
+                    let rab2 = new Rabbit("rabbit2", 17);
+                    
+                    console.log(rab1.hide());
+                    console.log(rab2.hide());
+                    
+                    let rabits=[rab1,rab2];
+                    // sorting the Rabbits by their speed before increasing their speed
+                    console.log(rabits.sort(Animal.compareBySpeed));
+                    
+                    console.log("rabit 1 increase speed to ", rab1.run(11));
+                    console.log("rabit 2 increase speed to ", rab2.run(7));
+                    
+                    // sorting the Rabbits by their speed after increasing their speed
+                    console.log(rabits.sort(Animal.compareBySpeed));                
+               
+        </pre>
+    
+</body>
+</html>
