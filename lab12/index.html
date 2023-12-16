@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        app.js
+        <hr>
+        const express = require('express');
+        const app = express();
+
+
+        app.use(express.json());
+
+
+        // Routes for /users
+        const usersRouter = require('./routes/users');
+        app.use('/users', usersRouter);
+
+        // Routes for /products
+        const productsRouter = require('./routes/products');
+        app.use('/products', productsRouter);
+
+
+        //Custom 404 page
+        app.use((req, res) => {
+        res.status(404).send('404 Page Not Found');
+        });
+
+
+        //Custom error handling
+        app.use((err, req, res, next) => {
+        console.error(err.stack);
+        res.status(500).send('Something went wrong!');
+        });
+
+
+        app.listen(3000, () => {
+        console.log(`Server is running on port 3000`);
+        });
+        <hr>
+        users.js
+        <hr>
+        const express = require('express');
+        const router = express.Router();
+
+        // Sample user data (for demo purposes)
+        let users = [
+        { id: 1, name: 'Anna', email: 'anna@example.com' },
+        { id: 2, name: 'John', email: 'john@example.com' },
+        { id: 3, name: 'Mussie', email: 'mussie@example.com' }
+        ];
+
+        // GET request for /users - Get all users
+        router.get('/', (req, res) => {
+        res.json(users);
+        });
+
+        // POST request for /users - Add a new user
+        router.post('/', (req, res) => {
+        const { name, email } = req.body;
+        const newUser = { id: users.length + 1, name, email };
+        users.push(newUser);
+        res.status(201).json(newUser);
+        });
+
+        module.exports = router;
+        <hr>
+        products.js
+        <hr>
+        const express = require('express');
+        const router = express.Router();
+        
+        
+        let products = [
+          { id: 1174, name: 'phone', price: 850, quantity:5 },
+          { id: 4521, name: 'laptop', price: 700, quantity:10 },
+          { id: 8796, name: 'watch', price: 150, quantity:20 }
+        ];
+        
+        // GET request for /products - Get all products
+        router.get('/', (req, res) => {
+          res.json(products);
+        });
+        
+        // POST request for /products - Add a new product
+        router.post('/', (req, res) => {
+          const { name, price } = req.body;
+          const newProduct = { id: products.length + 1, name:name, price:price};
+          products.push(newProduct);
+          res.status(201).json(newProduct);
+        });
+        
+        module.exports = router;
+        
+
+
+
+    </pre>
+    
+</body>
+</html>
