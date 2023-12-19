@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <pre>
+        Click "Update" button to edit a student info and make updates to server side, Table, and Dropdown list.
+        <hr>
+        async function updateStudent(oldId,newId,name,program) {
+
+            // Create an object with the updated data
+            const updatedStudent = {
+              id: newId,
+              name: name,
+              program: program,
+            };
+          
+            // Make a PUT request to update the student
+            const updateRequest = {
+              method: "PUT",
+              body: JSON.stringify(updatedStudent),
+              headers: { "Content-Type": "application/json" },
+            };
+          
+            const response = await fetch(`http://localhost:3000/students/${oldId}`, updateRequest);
+          
+            if (response.ok) {
+              const row = document.getElementById(oldId);
+              // Update the cells with the new data
+              const cells = row.getElementsByTagName("td");
+              cells[0].textContent = newId;
+              cells[1].textContent = name;
+              cells[2].textContent = program;
+        
+            } else {
+              alert("Error " + response.status);
+            }
+        
+                  // Refresh the dropdowns after the update
+                  document.getElementById("myform").reset();
+                  populateDropdown("ddlStudent");
+                  populateDropdown("ddlStudentForUpdate");
+          }
+        <hr>
+
+        Click "Delete" button to remove a student from server side, Table, and Dropdown list.
+        <hr>
+
+        
+            async function deleteStudent(id) {
+            
+            
+                if (!id) {
+                alert("Please select a student to delete.");
+                return;
+                }
+            
+                const deleteRequest = {
+                method: "DELETE",
+                };
+            
+                const response = await fetch(`http://localhost:3000/students/${id}`, deleteRequest);
+            
+                if (response.ok) {
+                // Remove the row from the table
+                const row = document.getElementById(id);
+                if (row) {
+                    row.remove();
+                } else {
+                    alert("Error: Student row not found.");
+                }
+
+                } else {
+                alert("Error " + response.status);
+                }
+                
+                // Clear the form and update the dropdown
+                document.getElementById("myform").reset();
+                populateDropdown("ddlStudent");
+                populateDropdown("ddlStudentForUpdate");
+            }
+
+    </pre>
+    
+</body>
+</html>
